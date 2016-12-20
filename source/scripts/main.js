@@ -29,6 +29,10 @@ main = {
     
     gameOver : false,
     
+    music : null,
+    shootSound : null,
+    explodeSound : null,
+    
     init : function( pSettings, pCanvasWindow ) {
         main.settings = pSettings;
         main.canvasWindow = pCanvasWindow;
@@ -52,7 +56,13 @@ main = {
         main.backgroundImage = new Image();
         main.backgroundImage.src = "assets/background.png";
         
+        main.music = new Audio( "assets/Cyborg Ninja - Incompetech.mp3" );
+        main.shootSound = new Audio( "assets/Laser_Shoot2.wav" );
+        main.explodeSound = new Audio( "assets/Explosion15.wav" );
+        
         main.createLevelObjects();
+        
+        main.music.play();
     },
     
     scroll : function() {
@@ -63,7 +73,7 @@ main = {
         for ( index = 0; index < main.levelObjects.length; index++ )
         {
             main.levelObjects[index].y += main.levelObjects[index].speed;
-            if ( main.levelObjects[index].y > main.settings.height + 50 )
+            if ( main.levelObjects[index].y > main.settings.height + 150 )
             {
                 isOffscreen = true;
             }
@@ -72,7 +82,15 @@ main = {
         if ( isOffscreen )
         {
             // Create next object set
-            main.createLevelObjects();
+            if ( main.levelLine >= main.level.length )
+            {
+                // End of game
+                main.gameOver = true;
+            }
+            else
+            {
+                main.createLevelObjects();
+            }
         }
     },
     
@@ -112,12 +130,6 @@ main = {
         }
         
         main.levelLine++;
-        
-        if ( main.levelLine >= main.level.length )
-        {
-            // End of game
-            main.gameOver = true;
-        }
     },
     
     update : function() {
@@ -151,6 +163,7 @@ main = {
                     && bullet.y < text.y + text.height
                     && bullet.y + bullet.height > text.y )
                 {
+                    main.explodeSound.play();
                     deleteMeBullets.push( b );
                     deleteMeText.push( t );
                 }
@@ -217,7 +230,8 @@ main = {
     },
     
     // Special
-    createBullet : function( x, y ) {
+    createBullet : function( x, y ) {   
+        main.shootSound.play();     
         var newBullet = {};
         newBullet.width = 8;
         newBullet.height = 8;
