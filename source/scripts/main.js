@@ -57,6 +57,7 @@ main = {
         main.backgroundImage.src = "assets/background.png";
         
         main.music = new Audio( "assets/Cyborg Ninja - Incompetech.mp3" );
+        main.music.loop = true;
         main.shootSound = new Audio( "assets/Laser_Shoot2.wav" );
         main.explodeSound = new Audio( "assets/Explosion15.wav" );
         
