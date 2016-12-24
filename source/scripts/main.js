@@ -330,6 +330,8 @@ main = {
             main.canvasWindow.font = "12px monospace";
             main.canvasWindow.fillText( "Bullet Speed: " + main.powerupInfo.bulletSpeed, 5, main.settings.height - 5 );
             main.canvasWindow.fillText( "Bullet Size: " + main.powerupInfo.bulletSize, 5, main.settings.height - 15 );
+            
+            main.canvasWindow.fillText( "v1.2", main.settings.width - 40, main.settings.height - 5 );
         }
         else
         {
