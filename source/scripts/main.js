@@ -11,6 +11,8 @@ main = {
         height : 0,
         speed : 10,
         xVel : 0,
+        bulletWidth : 8,
+        bulletHeight : 8,
         
         move : function( settings ) {
             this.x += ( this.xVel * this.speed );
@@ -21,15 +23,12 @@ main = {
                 this.x = settings.width - this.width;
         }
     },
-    powerup : {
-      x : 0,
-      y : 0,
-      width : 0,
-      height : 0,
-      speed : 5,
-      active : false
-    },
     powerups : [],
+    
+    powerupInfo : {
+        bulletSpeed : 0,
+        bulletSize : "standard"
+    },
     
     bullets : [],
     bulletImage : null,
@@ -60,11 +59,15 @@ main = {
         main.player.y = main.settings.height - main.player.height;
         main.player.bulletSpeed = 20;
         
+        main.powerupInfo.bulletSpeed = main.player.bulletSpeed;
+        
         main.bulletImage = new Image();
         main.bulletImage.src = "assets/bullet.png";
         
-        main.powerupImage = new Image();
-        main.powerupImage.src = "assets/powerup1.png";
+        main.powerupType1Image = new Image();
+        main.powerupType1Image.src = "assets/powerup1.png";
+        main.powerupType2Image = new Image();
+        main.powerupType2Image.src = "assets/powerup2.png";
         
         main.backgroundImage = new Image();
         main.backgroundImage.src = "assets/background.png";
@@ -79,8 +82,6 @@ main = {
         main.createLevelObjects();
         
         main.music.play();
-        
-        main.createPowerup( 0, 0 );
     },
     
     scroll : function() {
@@ -121,6 +122,17 @@ main = {
         newPowerup.width = 32;
         newPowerup.height = 32;
         newPowerup.active = true;
+        
+        var type = Math.floor( Math.random() * 2 );
+        if ( type == 1 )
+        {
+            newPowerup.type = "speedup";
+        }
+        else 
+        {
+            newPowerup.type = "bigbullet";
+        }
+        
         main.powerups.push( newPowerup );
     },
     
@@ -205,7 +217,7 @@ main = {
         
         if ( deleteMeText.length > 0 )
         {
-            var rand = Math.floor( ( Math.random() * 10 ) );
+            var rand = Math.floor( Math.random() * 10 );
             if ( rand == 0 )
             {
                 main.createPowerup( x, y );
@@ -232,7 +244,18 @@ main = {
                 main.player.y < thisPowerup.y + thisPowerup.height &&
                 main.player.y + main.player.height > thisPowerup.y )
             {
-                main.player.bulletSpeed += 2;
+                if ( main.powerups[index].type == "speedup" )
+                {
+                    main.player.bulletSpeed += 2;
+                    main.powerupInfo.bulletSpeed = main.player.bulletSpeed;
+                }
+                else 
+                {
+                    main.bulletImage.src = "assets/bulletbig.png";
+                    main.player.bulletWidth = 16;
+                    main.player.bulletHeight = 16;
+                    main.powerupInfo.bulletSize = "double";
+                }
                 deleteMePowerup.push( index );
                 main.powerupGot.play();
             }
@@ -292,8 +315,21 @@ main = {
             // Draw powerups
             for ( index = 0; index < main.powerups.length; index++ )
             {
-                main.canvasWindow.drawImage( main.powerupImage, main.powerups[index].x, main.powerups[index].y );
+                if ( main.powerups[index].type == "speedup" )
+                {
+                    main.canvasWindow.drawImage( main.powerupType1Image, main.powerups[index].x, main.powerups[index].y );
+                }
+                else
+                {
+                    main.canvasWindow.drawImage( main.powerupType2Image, main.powerups[index].x, main.powerups[index].y );
+                }
             }
+            
+            // Stats
+            main.canvasWindow.fillStyle = "#ffffff";
+            main.canvasWindow.font = "12px monospace";
+            main.canvasWindow.fillText( "Bullet Speed: " + main.powerupInfo.bulletSpeed, 5, main.settings.height - 5 );
+            main.canvasWindow.fillText( "Bullet Size: " + main.powerupInfo.bulletSize, 5, main.settings.height - 15 );
         }
         else
         {
@@ -313,8 +349,8 @@ main = {
     createBullet : function( x, y ) {   
         main.shootSound.play();     
         var newBullet = {};
-        newBullet.width = 8;
-        newBullet.height = 8;
+        newBullet.width = main.player.bulletWidth;
+        newBullet.height = main.player.bulletHeight;
         newBullet.x = x - newBullet.width / 2;
         newBullet.y = y;
         newBullet.speed = main.player.bulletSpeed;
