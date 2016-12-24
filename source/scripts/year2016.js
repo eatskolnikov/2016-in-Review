@@ -2,12 +2,11 @@
 function initLevel()
 {
   var level = new Array();
-  
-  level.push( "INSTRUCTIONS" );
-  level.push( "These are the events that occurred in 2016. Most of these are headlines from NPR.org. (Implicit content warning for everything). Use your spaceship to choose which events get to stay and which have to go by shooting them. A and D to move, J to shoot." );
-  
+
+  level.push( "These are the events that occurred in 2016. Most of these are headlines from NPR.org. (Implicit content warning for everything)." );
+  level.push( "Use your spaceship to choose which events get to stay and which have to go by shooting them. Use A and D to move, J to shoot, Spacebar to pause.")
   level.push( "Fork this repository to add to the event list. github.com/RachelJMorris/2016-in-Review" );
-  
+
   level.push( "January 3 - Armed Group Takes Over Federal Building Following Protest In Oregon" );
   level.push( "January 4 - 400 Years After His Death, Shakespeare's First Folio Goes Out On Tour" );
   level.push( "January 5 - 'A Bit Of A Montessori 2.0': Khan Academy Opens A Lab School" );
@@ -35,7 +34,7 @@ function initLevel()
   level.push( "January 28 – 4 Militants Remain In Oregon Wildlife Refuge, As FBI Negotiations Go On" );
   level.push( "January 29 – 'Affluenza Teen' To Remain In Juvenile Detention For Now" );
   level.push( "January 30 – Boat Sinks En Route To Greece, Killing At Least 37 Migrants" );
-  
+
   level.push( "February 2 – Teens Arrested In Mass Shooting At Seattle Homeless Camp" );
   level.push( "February 2 – Encryption May Hurt Surveillance, But Internet Of Things Could Open New Doors" );
   level.push( "February 2 – Yahoo Laying Off Staff And Considering Selling Itself" );
@@ -62,7 +61,7 @@ function initLevel()
   level.push( "February 22 – Nearly 2 Dozen People Dead After Tropical Cyclone Hits Fiji" );
   level.push( "February 24 – Plane Crash In Nepal Kills All 23 Aboard" );
   level.push( "February 29 – Advertising Company Will Use Its Billboards To Track Passing Cellphones" );
-  
+
   level.push( "March 1 – Astronauts Back Home After A Year In Space" );
   level.push( "March 5 – Scientists Discover 'Remarkable Little Octopod,' Possibly New Species" );
   level.push( "March 6 – Nancy Reagan dies" );
@@ -80,7 +79,7 @@ function initLevel()
   level.push( "March 29 – EgyptAir Plane Hijacked While Flying To Cairo" );
   level.push( "March 31 – DraftKings And FanDuel To Suspend Contests On College Sports 'Indefinitely'" );
   level.push( "March 31 – Overpass Collapse In Kolkata, India, Kills More Than A Dozen People" );
-  
+
   level.push( "April 2 – Clashes between Armenian and Azerbaijani military in Nagorno-Karabakh kill at least 193 people which becomes the heaviest breach of the 1994 ceasefire." );
   level.push( "April 3 – The International Consortium of Investigative Journalists (ICIJ) and the German newspaper Süddeutsche Zeitung publishes a set of 11.5 million confidential documents from the Panamanian corporate Mossack Fonseca that provides detailed information on more than 214,000 offshore companies including the identities of shareholders and directors including noted personalities and heads of state." );
   level.push( "April 4 – Dog Leads Police On Chase Across San Francisco Bridge" );
@@ -116,7 +115,7 @@ function initLevel()
   level.push( "April 29 - Lawsuit Will Decide Who Owns 'Star Trek' Language Klingon" );
   level.push( "April 29 - Key And Peele Duo Are Back As Action-Duo In 'Keanu'" );
   level.push( "April 29 - Comcast Buys DreamWorks Animation For $3.8 Billion In Race Against Disney" );
-  
+
   level.push( "May 11 – Suicide Bombings In Baghdad Kill More Than 85 People" );
   level.push( "May 12 – George Zimmerman Auctioning Off Gun He Used To Kill Trayvon Martin" );
   level.push( "May 15 – Library Of Congress Opens 'Jazz Singers' Exhibition" );
@@ -126,7 +125,7 @@ function initLevel()
   level.push( "May 20 – Super Hot! India Records Its Highest Temperature Ever" );
   level.push( "May 27 – Obama Makes Historic Visit To Hiroshima Memorial Peace Park" );
   level.push( "May 30 – 3 Shipwrecks In 3 Days: 700 People Die Trying To Cross Mediterranean" );
-  
+
   level.push( "June 3 - Muhammad Ali dies" );
   level.push( "June 12 – 50 Dead, 53 Hospitalized In Orlando Shooting" );
   level.push( "June 12 – Donors Line Up To Give Blood In Florida" );
@@ -141,7 +140,7 @@ function initLevel()
   level.push( "June 30 – 1.4 Million Adults Identify As Transgender In America, Study Says" );
   level.push( "June 30 – Pentagon Says Transgender Troops Can Now Serve Openly" );
   level.push( "June 30 – Boris Johnson Says He Won't Run For Prime Minister" );
-  
+
   level.push( "July 4 – NASA's Juno spacecraft enters orbit around Jupiter and begins a 20-month survey of the planet." );
   level.push( "July 14 – Bodycam Video Shows Police Shooting Of Unarmed 19-Year-Old In Fresno" );
   level.push( "July 15 – 'Sheer Terror' As Attack Along French Riviera Kills At Least 84" );
@@ -163,7 +162,7 @@ function initLevel()
   level.push( "July 29 – New Reports Of Hackers In Democratic Party Computer Systems" );
   level.push( "July 30 – Skydiver Luke Aikins Sets Record For Highest Jump Without Parachute" );
   level.push( "July 31 – Tokyo Elects Its First Female Governor" );
-  
+
   level.push( "August 12 - Louisiana Governor Declares State Of Emergency As Floodwaters Rise" );
   level.push( "August 5–21 – The 2016 Summer Olympics are held in Rio de Janeiro Brazil." );
   level.push( "August 18 – Usain Bolt Wins Eighth Olympic Gold Medal In The 200m Sprint" );
@@ -177,8 +176,8 @@ function initLevel()
   level.push( "August 29 – 'Mars Mission' Crew Emerges From Yearlong Simulation In Hawaii" );
   level.push( "August 29 – Suicide Bombing In Yemen Kills At Least 54; Attack Claimed By Islamic State" );
   level.push( "August 31 – The Brazilian Senate votes (61–20) to impeach the President of Brazil Dilma Rousseff." );
-  
-  
+
+
   level.push( "September 3 – The US and China ); together responsible for 40% of the world's carbon emissions both ratify the Paris global climate agreement." );
   level.push( "September 8 – NASA launches OSIRIS-REx ); its first asteroid sample return mission. The probe will visit Bennu and is expected to return with samples in 2023." );
   level.push( "September 9 – The government of North Korea conducts its fifth and reportedly biggest nuclear test. World leaders condemn the act with the South calling it \"maniacal recklessness\"." );
@@ -193,7 +192,7 @@ function initLevel()
   level.push( "September 28 – International investigators conclude that Malaysia Airlines Flight 17 was shot down by a Buk missile that came from an area controlled by pro-Russian rebels." );
   level.push( "September 28 – Global CO2 levels exceed 400 ppm at the time of year normally associated with minimum levels. A 400 ppm level is believed to be higher than anything experienced in human history." );
   level.push( "September 29 – 'Cup Noodles' Turns 45" );
- 
+
   level.push( "October 22 - AT&T Reaches Deal To Buy Time Warner For More Than $85 Billion" );
   level.push( "October 24 - Adnan Syed, Subject Of 'Serial,' Asks To Be Released On Bail" );
   level.push( "October 25 - Campus Cop On Trial For Shooting Death During Routine Traffic Stop" );
@@ -211,11 +210,11 @@ function initLevel()
   level.push( "October 30 - NASA's New 'Intruder Alert' System Spots An Incoming Asteroid" );
   level.push( "October 30 - 6.6-Magnitude Earthquake Flattens Much Of Historic Basilica In Central Italy" );
   level.push( "October 30 - Women Win 30 Seats In Iceland's Parliament — More Than Any Party" );
-  
-  level.push( "November 1 - 33 Miners Reported Dead After Blast In China" ); 
-  level.push( "November 2 - For First Time, Glamour's Women Of The Year Include A Man: Bono" ); 
-  level.push( "November 2 - Chicago Cubs Defeat Cleveland Indians In 10 Innings To Win World Series" ); 
-  level.push( "November 2 - Hulk Hogan Reaches Settlement With Gawker Worth Over $31 Million" ); 
+
+  level.push( "November 1 - 33 Miners Reported Dead After Blast In China" );
+  level.push( "November 2 - For First Time, Glamour's Women Of The Year Include A Man: Bono" );
+  level.push( "November 2 - Chicago Cubs Defeat Cleveland Indians In 10 Innings To Win World Series" );
+  level.push( "November 2 - Hulk Hogan Reaches Settlement With Gawker Worth Over $31 Million" );
   level.push( "November 2 - Neiman Marcus Is Selling Frozen Collard Greens For $66 Plus Shipping" ); // adding dumb stuff just because
   level.push( "November 3 - Protesters, Police Still Clashing Over Disputed North Dakota Pipeline" );
   level.push( "November 3 - Steven Seagal Is Now A Citizen Of Russia, Courtesy Of Putin" );
@@ -265,8 +264,8 @@ function initLevel()
   level.push( "November 29 - The Beauty Pageant Contestant Wore A Burkini" );
   level.push( "November 30 - Pelosi Overcomes Challenge To Win Re-Election As House Democratic Leader" );
   level.push( "November 30 - N.C. Officer Will Not Be Charged In Shooting Death Of Keith Lamont Scott" );
-  
-  
+
+
   level.push( "December 2 - Fidel Castro dies" );
   level.push( "December 2 - Unemployment Rate Drops To 4.6 Percent, Lowest Level Since 2007" );
   level.push( "December 3 - Yemen Crisis: Humanitarians Need 'Unconditional Access' To Reach The Food-Insecure" );
@@ -290,25 +289,24 @@ function initLevel()
   level.push( "December 19 - Calif. Judge Cleared Of Misconduct After Sentence In Stanford Sexual Assault Case" );
   level.push( "December 19 - The U.S. Electoral College votes for Donald Trump as president." );
   level.push( "December 19 - Russia's Ambassador to Turkey shot and killed in Ankara" );
-    
-  
+
+
   level.push( "SOURCES" );
   level.push( "https://en.wikipedia.org/wiki/2016" );
   level.push( "http://www.nytimes.com/interactive/projects/notable-deaths/2016" );
   level.push( "http://www.npr.org/" );
   level.push( "" );
-  
+
   level.push( "PROGRAMMING AND ART BY" );
   level.push( "Rachel J Morris" );
-  
+
   level.push( "MUSIC - Cyborg Ninja - FROM" );
   level.push( "Kevin MacLeod - http://incompetech.com/" );
-  
+
   level.push( "SOUND EFFECTS GENERATED WITH" );
-  level.push( "BFXR - http://incompetech.com/" );  
-  
-  level.push( "YEAR OVER" );  
-  
+  level.push( "BFXR - http://incompetech.com/" );
+
+  level.push( "YEAR OVER" );
+
   return level;
 }
-
