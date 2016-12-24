@@ -21,6 +21,15 @@ main = {
                 this.x = settings.width - this.width;
         }
     },
+    powerup : {
+      x : 0,
+      y : 0,
+      width : 0,
+      height : 0,
+      speed : 5,
+      active : false
+    },
+    powerups : [],
     
     bullets : [],
     bulletImage : null,
@@ -49,9 +58,13 @@ main = {
         main.player.height = 64;
         main.player.x = main.settings.width / 2 - main.player.width / 2;
         main.player.y = main.settings.height - main.player.height;
+        main.player.bulletSpeed = 20;
         
         main.bulletImage = new Image();
         main.bulletImage.src = "assets/bullet.png";
+        
+        main.powerupImage = new Image();
+        main.powerupImage.src = "assets/powerup1.png";
         
         main.backgroundImage = new Image();
         main.backgroundImage.src = "assets/background.png";
@@ -60,10 +73,14 @@ main = {
         main.music.loop = true;
         main.shootSound = new Audio( "assets/Laser_Shoot2.wav" );
         main.explodeSound = new Audio( "assets/Explosion15.wav" );
+        main.powerup = new Audio( "assets/Powerup2.wav" );
+        main.powerupGot = new Audio( "assets/Powerup3.wav" );
         
         main.createLevelObjects();
         
         main.music.play();
+        
+        main.createPowerup( 0, 0 );
     },
     
     scroll : function() {
@@ -93,6 +110,18 @@ main = {
                 main.createLevelObjects();
             }
         }
+    },
+    
+    createPowerup : function( x, y ) {
+        main.powerup.play();
+        var newPowerup = {}
+        newPowerup.x = x;
+        newPowerup.y = y;
+        newPowerup.speed = 6;
+        newPowerup.width = 32;
+        newPowerup.height = 32;
+        newPowerup.active = true;
+        main.powerups.push( newPowerup );
     },
     
     createLevelObjects : function() {
@@ -151,6 +180,7 @@ main = {
         }
         
         deleteMeText = [];
+        var x, y;
         // Check bullet collisions
         for ( b = 0; b < main.bullets.length; b++ )
         {
@@ -164,10 +194,47 @@ main = {
                     && bullet.y < text.y + text.height
                     && bullet.y + bullet.height > text.y )
                 {
+                    x = bullet.x;
+                    y = bullet.y;
                     main.explodeSound.play();
                     deleteMeBullets.push( b );
                     deleteMeText.push( t );
                 }
+            }
+        }
+        
+        if ( deleteMeText.length > 0 )
+        {
+            var rand = Math.floor( ( Math.random() * 10 ) );
+            if ( rand == 0 )
+            {
+                main.createPowerup( x, y );
+            }
+        }
+        
+        // Powerups
+        deleteMePowerup = [];
+        for ( index = 0; index < main.powerups.length; index++ )
+        {
+            var thisPowerup = main.powerups[index];
+            
+            thisPowerup.y += thisPowerup.speed;
+            
+            if ( thisPowerup.y > main.settings.height )
+            {
+                deleteMePowerup.push( index );
+            }
+            
+            // Collect powerup?
+            if ( 
+                main.player.x < thisPowerup.x + thisPowerup.width &&
+                main.player.x + main.player.width > thisPowerup.x &&
+                main.player.y < thisPowerup.y + thisPowerup.height &&
+                main.player.y + main.player.height > thisPowerup.y )
+            {
+                main.player.bulletSpeed += 2;
+                deleteMePowerup.push( index );
+                main.powerupGot.play();
             }
         }
         
@@ -181,6 +248,12 @@ main = {
         for ( index = 0; index < deleteMeText.length; index++ )
         {
             main.levelObjects.splice( deleteMeText[ index ], 1 );
+        }
+        
+        // Remove powerups that have been collected or gone off-screen
+        for ( index = 0; index < deleteMePowerup.length; index++ )
+        {
+            main.powerups.splice( deleteMePowerup[ index ], 1 );
         }
         
         main.scroll();
@@ -215,6 +288,12 @@ main = {
             {
                 main.canvasWindow.drawImage( main.bulletImage, main.bullets[index].x, main.bullets[index].y );
             }
+            
+            // Draw powerups
+            for ( index = 0; index < main.powerups.length; index++ )
+            {
+                main.canvasWindow.drawImage( main.powerupImage, main.powerups[index].x, main.powerups[index].y );
+            }
         }
         else
         {
@@ -238,7 +317,7 @@ main = {
         newBullet.height = 8;
         newBullet.x = x - newBullet.width / 2;
         newBullet.y = y;
-        newBullet.speed = 20;
+        newBullet.speed = main.player.bulletSpeed;
         
         main.bullets.push( newBullet );
     },
